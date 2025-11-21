@@ -1,10 +1,10 @@
 import { paperClasses } from '@mui/material/Paper';
-import { alpha, Theme } from '@mui/material/styles';
-import type { DataGridProComponents } from '@mui/x-data-grid-pro/themeAugmentation';
+import { alpha } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
+import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { listItemIconClasses } from '@mui/material/ListItemIcon';
 import { iconButtonClasses } from '@mui/material/IconButton';
-import { inputBaseClasses } from '@mui/material/InputBase';
 import { checkboxClasses } from '@mui/material/Checkbox';
 import { listClasses } from '@mui/material/List';
 import { gridClasses } from '@mui/x-data-grid';
@@ -12,7 +12,7 @@ import { tablePaginationClasses } from '@mui/material/TablePagination';
 import { gray } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const dataGridCustomizations: DataGridProComponents<Theme> & DataGridProComponents<Theme> = {
+export const dataGridCustomizations: DataGridComponents<Theme> = {
   MuiDataGrid: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -128,24 +128,6 @@ export const dataGridCustomizations: DataGridProComponents<Theme> & DataGridProC
         justifyContent: 'space-between',
       },
       columnHeaderDraggableContainer: { paddingRight: 2 },
-      toolbar: ({ theme }) => ({
-        backgroundColor: (theme.vars || theme).palette.background.paper,
-      }),
-      toolbarQuickFilter: {
-        [`& .${inputBaseClasses.root}`]: {
-          marginLeft: 6,
-          marginRight: 6,
-        },
-        [`& .${iconButtonClasses.root}`]: {
-          height: '36px',
-          width: '36px',
-        },
-        [`& .${iconButtonClasses.edgeEnd}`]: {
-          border: 'none',
-          height: '28px',
-          width: '28px',
-        },
-      },
     },
   },
 };

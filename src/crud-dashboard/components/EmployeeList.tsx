@@ -8,12 +8,14 @@ import Tooltip from '@mui/material/Tooltip';
 import {
   DataGrid,
   GridActionsCellItem,
+  gridClasses,
+} from '@mui/x-data-grid';
+import type {
   GridColDef,
   GridFilterModel,
   GridPaginationModel,
   GridSortModel,
   GridEventListener,
-  gridClasses,
 } from '@mui/x-data-grid';
 import AddIcon from '@mui/icons-material/Add';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -309,7 +311,6 @@ export default function EmployeeList() {
             onRowClick={handleRowClick}
             loading={isLoading}
             initialState={initialState}
-            showToolbar
             pageSizeOptions={[5, INITIAL_PAGE_SIZE, 25]}
             sx={{
               [`& .${gridClasses.columnHeader}, & .${gridClasses.cell}`]: {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Breadcrumbs, { breadcrumbsClasses } from '@mui/material/Breadcrumbs';
-import Container, { ContainerProps } from '@mui/material/Container';
+import Container from '@mui/material/Container';
 import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -40,7 +40,7 @@ export interface Breadcrumb {
   title: string;
   path?: string;
 }
-export interface PageContainerProps extends ContainerProps {
+export interface PageContainerProps extends React.ComponentProps<typeof Container> {
   children?: React.ReactNode;
   title?: string;
   breadcrumbs?: Breadcrumb[];

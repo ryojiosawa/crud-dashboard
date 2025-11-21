@@ -9,12 +9,11 @@ import type { SnackbarCloseReason } from '@mui/material/Snackbar';
 import type { CloseReason } from '@mui/material/SpeedDial';
 import CloseIcon from '@mui/icons-material/Close';
 import useSlotProps from '@mui/utils/useSlotProps';
-import NotificationsContext from './NotificationsContext';
-import type {
-  CloseNotification,
-  ShowNotification,
-  ShowNotificationOptions,
-} from './useNotifications';
+import NotificationsContext, {
+  type CloseNotification,
+  type ShowNotification,
+  type ShowNotificationOptions,
+} from './NotificationsContext';
 
 const RootPropsContext = React.createContext<NotificationsProviderProps | null>(
   null,
@@ -44,7 +43,7 @@ function Notification({
   const { severity, actionText, onAction, autoHideDuration } = options;
 
   const handleClose = React.useCallback(
-    (event: unknown, reason?: CloseReason | SnackbarCloseReason) => {
+    (_: unknown, reason?: CloseReason | SnackbarCloseReason) => {
       if (reason === 'clickaway') {
         return;
       }

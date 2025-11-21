@@ -1,13 +1,13 @@
-import { alpha, Theme } from '@mui/material/styles';
-import type { PickersProComponents } from '@mui/x-date-pickers-pro/themeAugmentation';
+import { alpha } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 import type { PickerComponents } from '@mui/x-date-pickers/themeAugmentation';
 import { menuItemClasses } from '@mui/material/MenuItem';
-import { pickersDayClasses, yearCalendarClasses } from '@mui/x-date-pickers';
+import { pickersDayClasses } from '@mui/x-date-pickers';
 import { gray, brand } from '../../../shared-theme/themePrimitives';
 
 /* eslint-disable import/prefer-default-export */
-export const datePickersCustomizations: PickersProComponents<Theme> & PickerComponents<Theme> = {
-  MuiPickerPopper: {
+export const datePickersCustomizations: PickerComponents<Theme> = {
+  MuiPickersPopper: {
     styleOverrides: {
       paper: ({ theme }) => ({
         marginTop: 4,
@@ -46,87 +46,6 @@ export const datePickersCustomizations: PickersProComponents<Theme> & PickerComp
         padding: 0,
         border: 'none',
       },
-    },
-  },
-  MuiMonthCalendar: {
-    styleOverrides: {
-      button: ({ theme }) => ({
-        fontSize: theme.typography.body1.fontSize,
-        color: (theme.vars || theme).palette.grey[600],
-        padding: theme.spacing(0.5),
-        borderRadius: theme.shape.borderRadius,
-        '&:hover': {
-          backgroundColor: (theme.vars || theme).palette.action.hover,
-        },
-        [`&.${yearCalendarClasses.selected}`]: {
-          backgroundColor: gray[700],
-          fontWeight: theme.typography.fontWeightMedium,
-        },
-        '&:focus': {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
-          outlineOffset: '2px',
-          backgroundColor: 'transparent',
-          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[700] },
-        },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[300],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
-          },
-          [`&.${yearCalendarClasses.selected}`]: {
-            color: (theme.vars || theme).palette.common.black,
-            fontWeight: theme.typography.fontWeightMedium,
-            backgroundColor: gray[300],
-          },
-          '&:focus': {
-            outline: `3px solid ${alpha(brand[500], 0.5)}`,
-            outlineOffset: '2px',
-            backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[300] },
-          },
-        }),
-      }),
-    },
-  },
-  MuiYearCalendar: {
-    styleOverrides: {
-      button: ({ theme }) => ({
-        fontSize: theme.typography.body1.fontSize,
-        color: (theme.vars || theme).palette.grey[600],
-        padding: theme.spacing(0.5),
-        borderRadius: theme.shape.borderRadius,
-        height: 'fit-content',
-        '&:hover': {
-          backgroundColor: (theme.vars || theme).palette.action.hover,
-        },
-        [`&.${yearCalendarClasses.selected}`]: {
-          backgroundColor: gray[700],
-          fontWeight: theme.typography.fontWeightMedium,
-        },
-        '&:focus': {
-          outline: `3px solid ${alpha(brand[500], 0.5)}`,
-          outlineOffset: '2px',
-          backgroundColor: 'transparent',
-          [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[700] },
-        },
-        ...theme.applyStyles('dark', {
-          color: (theme.vars || theme).palette.grey[300],
-          '&:hover': {
-            backgroundColor: (theme.vars || theme).palette.action.hover,
-          },
-          [`&.${yearCalendarClasses.selected}`]: {
-            color: (theme.vars || theme).palette.common.black,
-            fontWeight: theme.typography.fontWeightMedium,
-            backgroundColor: gray[300],
-          },
-          '&:focus': {
-            outline: `3px solid ${alpha(brand[500], 0.5)}`,
-            outlineOffset: '2px',
-            backgroundColor: 'transparent',
-            [`&.${yearCalendarClasses.selected}`]: { backgroundColor: gray[300] },
-          },
-        }),
-      }),
     },
   },
   MuiPickersDay: {
