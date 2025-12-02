@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router';
-import useNotifications from '../hooks/useNotifications/useNotifications';
+import * as React from "react";
+import { useNavigate } from "react-router";
+import useNotifications from "../hooks/useNotifications/useNotifications";
 import {
   createOne as createEmployee,
   validate as validateEmployee,
   type Employee,
-} from '../data/employees';
+} from "../data/employees";
 import EmployeeForm, {
   type FormFieldValue,
   type EmployeeFormState,
-} from './EmployeeForm';
-import PageContainer from './PageContainer';
+} from "./EmployeeForm";
+import PageContainer from "./PageContainer";
 
-const INITIAL_FORM_VALUES: Partial<EmployeeFormState['values']> = {
-  role: 'Market',
+const INITIAL_FORM_VALUES: Partial<EmployeeFormState["values"]> = {
+  role: "Marketing",
   isFullTime: true,
 };
 
@@ -30,28 +30,30 @@ export default function EmployeeCreate() {
   const formErrors = formState.errors;
 
   const setFormValues = React.useCallback(
-    (newFormValues: Partial<EmployeeFormState['values']>) => {
+    (newFormValues: Partial<EmployeeFormState["values"]>) => {
       setFormState((previousState) => ({
         ...previousState,
         values: newFormValues,
       }));
     },
-    [],
+    []
   );
 
   const setFormErrors = React.useCallback(
-    (newFormErrors: Partial<EmployeeFormState['errors']>) => {
+    (newFormErrors: Partial<EmployeeFormState["errors"]>) => {
       setFormState((previousState) => ({
         ...previousState,
         errors: newFormErrors,
       }));
     },
-    [],
+    []
   );
 
   const handleFormFieldChange = React.useCallback(
-    (name: keyof EmployeeFormState['values'], value: FormFieldValue) => {
-      const validateField = async (values: Partial<EmployeeFormState['values']>) => {
+    (name: keyof EmployeeFormState["values"], value: FormFieldValue) => {
+      const validateField = async (
+        values: Partial<EmployeeFormState["values"]>
+      ) => {
         const { issues } = validateEmployee(values);
         setFormErrors({
           ...formErrors,
@@ -64,7 +66,7 @@ export default function EmployeeCreate() {
       setFormValues(newFormValues);
       validateField(newFormValues);
     },
-    [formValues, formErrors, setFormErrors, setFormValues],
+    [formValues, formErrors, setFormErrors, setFormValues]
   );
 
   const handleFormReset = React.useCallback(() => {
@@ -75,27 +77,29 @@ export default function EmployeeCreate() {
     const { issues } = validateEmployee(formValues);
     if (issues && issues.length > 0) {
       setFormErrors(
-        Object.fromEntries(issues.map((issue) => [issue.path?.[0], issue.message])),
+        Object.fromEntries(
+          issues.map((issue) => [issue.path?.[0], issue.message])
+        )
       );
       return;
     }
     setFormErrors({});
 
     try {
-      await createEmployee(formValues as Omit<Employee, 'id'>);
-      notifications.show('Employee created successfully.', {
-        severity: 'success',
+      await createEmployee(formValues as Omit<Employee, "id">);
+      notifications.show("Employee created successfully.", {
+        severity: "success",
         autoHideDuration: 3000,
       });
 
-      navigate('/employees');
+      navigate("/employees");
     } catch (createError) {
       notifications.show(
         `Failed to create employee. Reason: ${(createError as Error).message}`,
         {
-          severity: 'error',
+          severity: "error",
           autoHideDuration: 3000,
-        },
+        }
       );
       throw createError;
     }
@@ -104,7 +108,10 @@ export default function EmployeeCreate() {
   return (
     <PageContainer
       title="New Employee"
-      breadcrumbs={[{ title: 'Employees', path: '/employees' }, { title: 'New' }]}
+      breadcrumbs={[
+        { title: "Employees", path: "/employees" },
+        { title: "New" },
+      ]}
     >
       <EmployeeForm
         formState={formState}
